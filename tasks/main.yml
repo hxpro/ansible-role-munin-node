@@ -1,0 +1,25 @@
+---
+- name: Install munin-node packages
+  package:
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - munin-node
+    - munin-common
+    - smartmontools
+    - perl-Net-CIDR
+  tags: install
+
+- name: Config munin-node
+  template:
+    src=munin-node.conf.j2
+    dest="{{ munin_node_conf }}"
+  notify: restart munin-node
+  tags: config
+
+- name: Start / enable service munin-node
+  systemd:
+    name: munin-node
+    state: started
+    enabled: yes
+  tags: setup
