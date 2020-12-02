@@ -1,0 +1,8 @@
+---
+munin_node_pkg:
+  - munin-node
+  - munin-common
+  - smartmontools
+  - perl-Net-CIDR
+munin_node_log_file: /var/log/munin-node/munin-node.log
+

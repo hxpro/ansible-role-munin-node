@@ -1,7 +1,7 @@
 {{ ansible_managed | comment }}
 
 log_level 4
-log_file /var/log/munin-node/munin-node.log
+log_file {{ munin_node_log_file }}
 pid_file /var/run/munin/munin-node.pid
 
 background 1

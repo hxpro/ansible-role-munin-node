@@ -1,19 +1,19 @@
 ---
+- name: Gather OS Specific variables
+  include_vars: "{{ ansible_distribution }}.yml"
+  tags: always
+
 - name: Install munin-node packages
   package:
-    name: "{{ item }}"
+    name: "{{ munin_node_pkg }}"
     state: present
-  with_items:
-    - munin-node
-    - munin-common
-    - smartmontools
-    - perl-Net-CIDR
   tags: install
 
 - name: Config munin-node
   template:
-    src=munin-node.conf.j2
-    dest="{{ munin_node_conf }}"
+    src: munin-node.conf.j2
+    dest: "{{ munin_node_conf }}"
+    mode: '0644'
   notify: restart munin-node
   tags: config
 

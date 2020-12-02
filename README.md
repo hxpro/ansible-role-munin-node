@@ -7,9 +7,9 @@ Munin node
 Role Variables
 --------------
 
-    munin_node_allow:
-      - 127.0.0.1/32
-
+| Variable              | Default value
+|---                    |---
+| munin_node_allow      | [127.0.0.1/32]
 
 Example Playbook
 ----------------
